@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta name="content-type" value="text/html; charset=utf-8" />
+    <title>googtext - translate software using Google</title>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+<body>
+    <img src="googtext.jpg" alt="googtext" />
+    <h1>What is this stuff</h1>
+
+    <p class="note">
+        <b>What is it?</b><br />
+        Googtext is a small service that allows you to upload a gettext .PO file
+        (file describing strings in application and their translations in particular
+        language), and asks Google to translate it. Returned translations are then
+        saved to a new .PO file which you can download.
+    </p>
+
+    <p class="note">
+        <b>Is it any good?</b><br />
+        Compared to <em>any</em> human translator, <b>NO</b>. This kind of hacked-up out-of-context
+        automated translation will hapilly produce utter nonsense. It is, however, good
+        to start with. I think it's easier to fix existing bad translation than start
+        from scratch.
+    </p>
+
+    <p class="note">
+        <b>How does it work?</b><br />
+        A PHP script takes care of file uploading. Once it's on the server, a command-line
+        Python program is called, which parses the .PO file, takes out the original strings
+        and passes them to <a href="http://code.google.com/apis/ajaxlanguage/">Google
+        Language API</a> in batch mode, in several requests (101 strings per request). The
+        translated strings are inserted into .PO file as translations, and the file is saved
+        and downloaded. The entire process uses and produces UTF-8 encoded files.
+    </p>
+
+    <p class="note">
+        <b>Show me the source!</b><br />
+        You can grab the source <a href="googtext.tgz">here</a>. The PHP script, Python
+        <code>googtext</code> program and <code>python-google-translate</code> module
+        are under Public Domain, and you may use them as you see fit. To run this, you'll
+        need a recent Python installation (I'm using 2.5) with <a
+        href="http://pypi.python.org/pypi/python-json/">python-json</a> (included in
+        Python 2.6) and <a href="http://code.google.com/p/polib/">polib</a> modules.
+        You may also want to get Google API key if you plan to use this heavily.
+    </p>
+
+    <p class="note">
+        <b>Feedback</b><br />
+        If you've experienced any problems with the service, want to report some error,
+        suggest improvement or just comment, thank or flame me, feel free to post a
+        comment on <a href="http://senko.net/">my blog</a> or send me a message on
+        <a href="http://twitter.com/senkorasic">Twitter</a>.
+    </p>
+
+    <p><a href="index.html">Back to translating!</a></p>
+
+    <p class="subnote">
+        Created by <a href="http://senko.net/">Senko Rašić</a>.
+    </p>
+</body>
+</html>
